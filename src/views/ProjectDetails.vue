@@ -33,6 +33,7 @@ export default {
   },
   created() {
     this.getProjectData();
+    this.store.showHeader = true;
   },
 };
 </script>
