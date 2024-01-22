@@ -20,7 +20,10 @@
                 </div>
                 <div id="projects">
                     <div id="title">
-                        <h1>Projects</h1>
+                        <h1>
+                            <router-link class="text-white text-decoration-none"
+                                :to="{ name: 'projects' }">Projects</router-link>
+                        </h1>
                     </div>
                     <div id="projects-container">
                         <div>Test</div>
