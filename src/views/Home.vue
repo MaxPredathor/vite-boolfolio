@@ -16,7 +16,6 @@
                             implemented
                             UX.</p>
                     </div>
-
                 </div>
                 <div id="projects">
                     <div id="title">
@@ -26,11 +25,13 @@
                         </h1>
                     </div>
                     <div id="projects-container">
-                        <div>Test</div>
-                        <div>Test</div>
-                        <div>Test</div>
-                        <div>Test</div>
-                        <div>Test</div>
+                        <ul v-if="projects">
+                            <li v-for="project in projects" :key="project.id">
+                                <router-link class="text-white text-decoration-none"
+                                    :to="{ name: 'project-details', params: { slug: project.slug } }">{{
+                                        project.title }}</router-link>
+                            </li>
+                        </ul>
                         <div id="top-small"></div>
                         <div id="left-small"></div>
                     </div>
@@ -46,11 +47,13 @@
 
 <script>
 import { store } from "../store";
+import axios from "axios";
 export default {
     name: "Home",
     data() {
         return {
             store,
+            projects: [],
         }
     },
     methods: {
@@ -67,11 +70,23 @@ export default {
                     { duration: 2500, fill: "forwards" }
                 );
             });
-        }
+        },
+        getAllProjects() {
+            axios
+                .get(store.apiURL + "projects")
+                .then((res) => {
+                    console.log(res.data);
+                    this.projects = res.data.results.data;
+                    console.log(this.projects);
+                    // this.currentPage = res.data.results.current_page;
+                    // this.lastPage = res.data.results.last_page;
+                });
+        },
     },
     mounted() {
         this.store.showHeader = false;
         this.blobFollowCursor();
+        this.getAllProjects();
     }
 };
 </script>
@@ -208,6 +223,14 @@ export default {
                     height: 70%;
                     width: 100%;
                     position: relative;
+
+                    ul {
+                        list-style-type: none;
+
+                        li {
+                            font-size: 1.2rem;
+                        }
+                    }
 
                     #left-small {
                         position: absolute;

@@ -2,19 +2,16 @@
   <div>Projects</div>
   <ul>
     <li v-for="project in projects" :key="project.id">
-      <router-link
-        :to="{ name: 'project-details', params: { slug: project.slug } }"
-        class="btn btn-primary"
-        >{{ project.title }}</router-link
-      >
+      <router-link :to="{ name: 'project-details', params: { slug: project.slug } }" class="btn btn-primary">{{
+        project.title }}</router-link>
     </li>
   </ul>
   <div>
     <div>Pagina corrente: {{ currentPage }}</div>
     <div>Ultima pagina: {{ lastPage }}</div>
   </div>
-  <button :disabled="currentPage === lastPage" @click="nextPage">Avanti</button>
   <button :disabled="currentPage === 1" @click="previousPage">Indietro</button>
+  <button :disabled="currentPage === lastPage" @click="nextPage">Avanti</button>
 </template>
 
 <script>
