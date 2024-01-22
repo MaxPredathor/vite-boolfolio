@@ -192,7 +192,7 @@ export default {
 
             #projects {
                 width: 45%;
-                padding-left: 120px;
+                padding-left: 20%;
 
                 #title {
                     height: 30%;
@@ -211,10 +211,10 @@ export default {
 
                     #left-small {
                         position: absolute;
-                        left: -20%;
+                        left: -25%;
                         top: 15%;
                         width: 100px;
-                        height: 4px;
+                        height: 3px;
                         transform: rotate(270deg);
                         background: $linear-gradient;
                         border-radius: 1em 2em 0.5em 1em;
@@ -222,10 +222,10 @@ export default {
 
                     #top-small {
                         position: absolute;
-                        top: -8.2%;
-                        left: -8.5%;
+                        top: -8.4%;
+                        left: -9%;
                         width: 100px;
-                        height: 4px;
+                        height: 3px;
                         background: $linear-gradient;
                         transform: rotate(180deg);
                         border-radius: 1em 2em 0.5em 1em;

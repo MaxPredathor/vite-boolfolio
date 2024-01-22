@@ -1,7 +1,6 @@
 <template>
-  <div>Prova</div>
   <h1 v-if="project">{{ project.title }}</h1>
-  <img :src="`${store.imagePath}${project.image}`" :alt="project.title" />
+  <img class="w-25" :src="`${store.imagePath}${project.image}`" :alt="project.title" />
 </template>
 
 <script>
