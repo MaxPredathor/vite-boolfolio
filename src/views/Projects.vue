@@ -2,7 +2,11 @@
   <div>Projects</div>
   <ul>
     <li v-for="project in projects" :key="project.id">
-      {{ project.title }}
+      <router-link
+        :to="{ name: 'project-details', params: { slug: project.slug } }"
+        class="btn btn-primary"
+        >{{ project.title }}</router-link
+      >
     </li>
   </ul>
   <div>
@@ -28,11 +32,24 @@ export default {
     };
   },
   methods: {
+    // getAllProjects() {
+    //   axios.get(store.apiURL + "projects").then((res) => {
+    //     this.projects = res.data.results.data;
+    //     this.currentPage = res.data.results.current_page;
+    //     this.lastPage = res.data.results.last_page;
+    //     console.log(res.data);
+    //   });
+    // },
     getAllProjects() {
-      axios.get(store.apiURL + "projects").then((res) => {
-        this.projects = res.data.results.data;
-        console.log(res.data);
-      });
+      axios
+        .get(store.apiURL + "projects", { params: { page: this.currentPage } })
+        .then((res) => {
+          console.log(res.data);
+          this.projects = res.data.results.data;
+          console.log(this.projects);
+          this.currentPage = res.data.results.current_page;
+          this.lastPage = res.data.results.last_page;
+        });
     },
     nextPage() {
       this.currentPage++;

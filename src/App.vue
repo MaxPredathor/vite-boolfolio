@@ -12,24 +12,23 @@ export default {
   data() {
     return {
       store,
-      projects: [],
     };
   },
   components: {
     Header,
   },
   methods: {
-    getAllProjects() {
-      axios
-        .get(store.apiURL + "/projects", { params: { page: this.currentPage } })
-        .then((res) => {
-          console.log(res.data);
-          this.projects = res.data.results.data;
-          console.log(this.projects);
-          this.currentPage = res.data.results.current_page;
-          this.lastPage = res.data.results.last_page;
-        });
-    },
+    // getAllProjects() {
+    //   axios
+    //     .get(store.apiURL + "/projects", { params: { page: this.currentPage } })
+    //     .then((res) => {
+    //       console.log(res.data);
+    //       this.projects = res.data.results.data;
+    //       console.log(this.projects);
+    //       this.currentPage = res.data.results.current_page;
+    //       this.lastPage = res.data.results.last_page;
+    //     });
+    // },
   },
   mounted() {
     // this.getAllProjects();

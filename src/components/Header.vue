@@ -14,8 +14,8 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto" v-for="item in menu">
-        <li class="nav-item">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" v-for="(item, index) in menu" :key="index">
           <router-link class="nav-link" :to="{ name: item.name }">
             {{ item.label }}
           </router-link>
