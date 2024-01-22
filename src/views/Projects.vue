@@ -1,3 +1,5 @@
+
+import { store } from '@/store';
 <template>
   <div>Projects</div>
   <ul>
@@ -59,6 +61,7 @@ export default {
   },
   mounted() {
     this.getAllProjects();
+    this.store.showHeader = true;
   },
 };
 </script>
