@@ -1,5 +1,5 @@
 <template>
-  <Header></Header>
+  <Header v-if="store.showHeader"></Header>
   <router-view></router-view>
 </template>
 
@@ -18,7 +18,7 @@ export default {
     Header,
   },
   methods: {},
-  mounted() {},
+  mounted() { },
 };
 </script>
 

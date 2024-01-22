@@ -1,11 +1,12 @@
 $background-color: #1d1d20;
 $white-text-color: #cdcdd0;
 $icon-color: #6d6d70;
-$linear-gradient-background: rgb(195, 180, 93);
+$linear-gradient-background: rgb(190, 213, 65);
 $linear-gradient: linear-gradient(
   125deg,
-  rgba(195, 180, 93, 1) 0%,
-  rgba(186, 172, 98, 1) 16%,
-  rgba(146, 138, 119, 1) 71%,
-  rgba(168, 162, 168, 1) 100%
+  rgba(190, 213, 65, 1) 0%,
+  rgba(207, 73, 174, 1) 100%
 );
+$main-font: "Montserrat", sans-serif;
+$fw-title: 400;
+$fw-text: 100;
