@@ -1,23 +1,21 @@
-
-import { store } from '@/store';
 <template>
   <div>Projects</div>
-  <ul>
-    <li v-for="project in projects" :key="project.id">
-      <router-link :to="{ name: 'project-details', params: { slug: project.slug } }" class="btn btn-primary">{{
-        project.title }}</router-link>
-    </li>
-  </ul>
-  <div>
-    <div>Pagina corrente: {{ currentPage }}</div>
-    <div>Ultima pagina: {{ lastPage }}</div>
+  <div class="container">
+    <div class="row">
+      <CardProject v-for="project in projects" :key="project.id" :project="project"></CardProject>
+    </div>
+    <div>
+      <div>Pagina corrente: {{ currentPage }}</div>
+      <div>Ultima pagina: {{ lastPage }}</div>
+    </div>
+    <button :disabled="currentPage === 1" @click="previousPage">Indietro</button>
+    <button :disabled="currentPage === lastPage" @click="nextPage">Avanti</button>
   </div>
-  <button :disabled="currentPage === 1" @click="previousPage">Indietro</button>
-  <button :disabled="currentPage === lastPage" @click="nextPage">Avanti</button>
 </template>
 
 <script>
 import axios from "axios";
+import CardProject from "../components/CardProject.vue";
 import { store } from "../store.js";
 
 export default {
@@ -29,6 +27,9 @@ export default {
       currentPage: 1,
       lastPage: 0,
     };
+  },
+  components: {
+    CardProject,
   },
   methods: {
     // getAllProjects() {
