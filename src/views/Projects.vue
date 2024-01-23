@@ -4,12 +4,14 @@
     <div class="row">
       <CardProject v-for="project in projects" :key="project.id" :project="project"></CardProject>
     </div>
-    <div>
-      <div>Pagina corrente: {{ currentPage }}</div>
-      <div>Ultima pagina: {{ lastPage }}</div>
+    <div class="d-flex ">
+      <button class="btn" :disabled="currentPage === 1" @click="previousPage">Indietro</button>
+      <div v-for="n in lastPage" :key="n">
+        <button class="btn" @click="currentPage = n">{{ n }}</button>
+      </div>
+      <button class="btn" :disabled="currentPage === lastPage" @click="nextPage">Avanti</button>
     </div>
-    <button :disabled="currentPage === 1" @click="previousPage">Indietro</button>
-    <button :disabled="currentPage === lastPage" @click="nextPage">Avanti</button>
+
   </div>
 </template>
 
