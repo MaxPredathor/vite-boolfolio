@@ -1,6 +1,10 @@
 <template>
   <div>Projects</div>
   <div class="container">
+    <select name="categories" @change="getProjectsByCategory()" v-model="selectedCategory">
+      <option selected value="all">All</option>
+      <option v-for="category in store.categories" :key="category.id" :value="category.id">{{ category.name }}</option>
+    </select>
     <div class="row">
       <CardProject v-for="project in projects" :key="project.id" :project="project"></CardProject>
     </div>
@@ -28,20 +32,13 @@ export default {
       projects: [],
       currentPage: 1,
       lastPage: 0,
+      selectedCategory: "all",
     };
   },
   components: {
     CardProject,
   },
   methods: {
-    // getAllProjects() {
-    //   axios.get(store.apiURL + "projects").then((res) => {
-    //     this.projects = res.data.results.data;
-    //     this.currentPage = res.data.results.current_page;
-    //     this.lastPage = res.data.results.last_page;
-    //     console.log(res.data);
-    //   });
-    // },
     getAllProjects() {
       axios
         .get(store.apiURL + "projects", { params: { page: this.currentPage } })
@@ -52,6 +49,31 @@ export default {
           this.currentPage = res.data.results.current_page;
           this.lastPage = res.data.results.last_page;
         });
+    },
+    getAllCategories() {
+      if (store.categories.length < 1) {
+        axios
+          .get(store.apiURL + "categories")
+          .then((res) => {
+            store.categories = res.data.results;
+            console.log(store.categories);
+          })
+      }
+
+    },
+    getProjectsByCategory() {
+      if (this.selectedCategory == "all") {
+        this.getAllProjects();
+      } else {
+        axios
+          .get(store.apiURL + "projects", {
+            params: { category: this.selectedCategory },
+          })
+          .then((response) => {
+            console.log(response);
+            this.projects = response.data.results;
+          });
+      }
     },
     nextPage() {
       this.currentPage++;
@@ -65,6 +87,7 @@ export default {
   mounted() {
     this.getAllProjects();
     this.store.showHeader = true;
+    this.getAllCategories();
   },
 };
 </script>
