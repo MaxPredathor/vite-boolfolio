@@ -24,8 +24,8 @@ const router = createRouter({
       component: ProjectDetails,
     },
     {
-      path: "/contact",
-      name: "contact",
+      path: "/contacts",
+      name: "contacts",
       component: Contact,
     },
     {

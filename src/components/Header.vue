@@ -33,8 +33,8 @@ export default {
           name: "projects",
         },
         {
-          label: "Contact",
-          name: "contact",
+          label: "Contacts",
+          name: "contacts",
         },
       ],
     };
