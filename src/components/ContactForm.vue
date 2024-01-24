@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form @submit.prevent="test123()">
+        <form @submit.prevent="sumbitForm">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" v-model="newMail.name" class="form-control" id="name" placeholder="Enter name">
@@ -45,7 +45,7 @@ export default {
         }
     },
     methods: {
-        test123() {
+        sumbitForm() {
             axios.post(this.store.apiURL + "contacts", this.newMail)
                 .then((res) => {
                     console.log(res);
