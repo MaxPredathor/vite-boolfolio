@@ -1,6 +1,14 @@
 <template>
-  <h1 v-if="project">{{ project.title }}</h1>
-  <img class="w-25" :src="`${store.imagePath}${project.image}`" :alt="project.title" />
+  <div v-if="project">
+    <h1>{{ project.title }}</h1>
+    <p>{{ project.body }}</p>
+    <p>{{ project.category.name }}</p>
+    <div class="d-inline-block" v-for="item in project.technologies">
+      <img style="width: 50px" :src="item.image" :alt="item.name">
+    </div>
+    <br>
+    <img class="w-25 mt-4" :src="`${store.imagePath}${project.image}`" :alt="project.title" />
+  </div>
 </template>
 
 <script>
